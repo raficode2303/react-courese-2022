@@ -1,11 +1,15 @@
 import './App.css'
 import logo from '../logo.svg'
+/* COMPONENTS */
+import { HeaderPractice } from './HeaderPractice'
+import MainContentPractice from './MainContentPractice'
+import FooterPractcice from './FooterPractice'
 
 const Header = () => {
   return (
-    <header>
+    <header className='header'>
       <div className='logo-facts'>
-        <img src={logo} alt='react-logo-atom-symbol' />
+        <img src={logo} alt='react-logo-atom-symbol' className='img' />
         <h5>React Facts</h5>
       </div>
       <h4>React Course - project-1</h4>
@@ -15,7 +19,7 @@ const Header = () => {
 
 const Main = () => {
   return (
-    <main>
+    <main className='main'>
       <h1>Fun Facts about React</h1>
       <ul>
         <li>Was first released in 2013</li>
@@ -27,12 +31,20 @@ const Main = () => {
     </main>
   )
 }
-function App({ number }) {
+
+function Practice() {
+  return (
+    <>
+      <HeaderPractice />
+      <MainContentPractice />
+      <FooterPractcice />
+    </>
+  )
+}
+function App() {
   return (
     <div className='app'>
-      <h1>{number}</h1>
-      <Header />
-      <Main />
+      <Practice />
     </div>
   )
 }
