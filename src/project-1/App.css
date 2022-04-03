@@ -1,0 +1,28 @@
+.app {
+  display: grid;
+  background-image: './logo.svg';
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5px;
+  background-color: darkblue;
+}
+.logo-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+img {
+  width: 40px;
+}
+img + p {
+  color: green;
+}
+
+main {
+  background-color: rgb(51, 102, 153, 0.6);
+}
