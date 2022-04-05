@@ -1,20 +1,33 @@
 /* google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,800;1,800&family=Rubik+Wet+Paint&display=swap');
 
-/* inital */
+/* initial */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
 }
 /* GENERAL */
 section {
   padding: 20px;
-  border: solid green;
 }
+
+.bold {
+  font-style: italic;
+  font-weight: bold;
+  color: black;
+}
+/* app */
+.app {
+  max-width: 700px;
+  margin: 0 auto;
+  border: solid #369 10px;
+  background-color: oldlace;
+}
+
 /* NavBar */
 nav {
   display: flex;
+  background-color: rgba(255, 192, 203, 0.6);
   height: 70px;
   width: 50%;
   padding: 20px 36px;
@@ -31,16 +44,83 @@ nav {
   display: flex;
   flex-direction: column;
 }
+@keyframes anime-img {
+  0% {
+    filter: blur(5px);
+    transform: translateY(1px);
+  }
+  50% {
+    filter: blur(2.5px);
+    transform: translateY(2.5px);
+  }
+  100% {
+    filter: blur(0) contrast(1);
+    transform: translateY(-2.5px);
+  }
+}
 .hero--img {
-  max-width: 400px;
+  max-width: 600px;
   align-self: center;
+  filter: blur(5px);
+  transition: 0.4s;
+  animation: anime-img 5s 2s infinite forwards;
+}
+.hero--img:hover {
+  transform: rotateY(180deg) scale(1.02) translateY(20px);
 }
 .hero > h1 {
   margin-bottom: 1rem;
-  border: solid;
+  font-family: 'Poppins', sans-serif;
 }
 
 .hero > p {
-  border: solid;
   margin-top: 0;
+}
+/* Cards container */
+.cards-container {
+  display: flex;
+  gap: 25px;
+  overflow-x: scroll;
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* Card */
+.card {
+  position: relative;
+  min-width: 222px;
+  border-radius: 9px;
+}
+.sold-out {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  background-color: #fff;
+  text-transform: uppercase;
+  font-weight: lighter;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+.card > img {
+  width: 100%;
+  min-height: 222px;
+  border-radius: 12px;
+}
+.card--info {
+  display: flex;
+  align-items: center; /* make img not to strech */
+}
+
+.card--info > img {
+  width: 24px;
+  border: solid green;
+  background-color: yellow;
+}
+
+.card > h4,
+.card h3 {
+  margin: 1px auto;
+  line-height: 1.2;
+  color: grey;
 }
