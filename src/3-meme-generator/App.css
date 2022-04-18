@@ -1,0 +1,63 @@
+:root {
+  --main-color: purple;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--main-color);
+  border-radius: 5px;
+  color: white;
+  height: 65px;
+  padding: 20px;
+}
+
+.header--image {
+  height: 100%;
+  margin-right: 6px;
+}
+
+.header--title {
+  font-size: 1.25rem;
+  margin-right: auto;
+}
+
+.header--project {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* form */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.input-sentences {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.input-sentences input {
+  border-radius: 5px;
+  height: 2rem;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
+.form-submit {
+  width: 100%;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.submit-image {
+  width: 40px;
+}
