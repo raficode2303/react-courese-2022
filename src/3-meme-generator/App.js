@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 // style
 import './App.css'
 // components
 import Header from './componenets/Header'
 import Meme from './componenets/Meme'
+import Image from './componenets/Image'
+// memesData
+import memesData from './memesData'
+
 const App = () => {
+  const [topText, setTopText] = useState()
+  const [bottomText, setBottomText] = useState()
   return (
-    <div>
-      <h1>Hello meme projects</h1>
+    <div className='app'>
+      <h1>meme projects</h1>
       <Header />
-      <Meme />
+      <Meme
+        setTopText={setTopText}
+        setBottomText={setBottomText}
+        topText={topText}
+        bottomText={bottomText}
+      />
+      <Image topText={topText} bottomText={bottomText} />
     </div>
   )
 }

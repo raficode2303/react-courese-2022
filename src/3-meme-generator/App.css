@@ -1,6 +1,22 @@
 :root {
   --main-color: purple;
 }
+/* app */
+.app {
+  min-width: 600px;
+  max-width: 900px;
+  /* align-items: center;
+  justify-content: center; */
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border: 2px solid green;
+  box-shadow: 2px 5px rgb(227, 201, 201);
+}
+h1 {
+  text-align: center;
+}
+/* Header Componenet */
 .header {
   display: flex;
   align-items: center;
@@ -60,4 +76,32 @@
 
 .submit-image {
   width: 40px;
+}
+
+/* Image */
+.main-image {
+  position: relative;
+  text-align: center;
+}
+.main-image img {
+  width: 70%;
+}
+.topText,
+.bottomText {
+  position: absolute;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-weight: 900;
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+.topText {
+  top: 6%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bottomText {
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -1,10 +1,15 @@
 import React from 'react'
 
-function Meme() {
+function Meme({ setTopText, setBottomText }) {
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('i was clicked')
+    console.log('i was clicked', e.target.input)
+    setTopText(topTextElememt.current.value)
+    setBottomText(bottomTextElememt.current.value)
   }
+
+  const topTextElememt = React.useRef()
+  const bottomTextElememt = React.useRef()
 
   const changeBackColor = (e) => {
     console.log(e.target)
@@ -13,8 +18,16 @@ function Meme() {
   return (
     <form className='form'>
       <div className='input-sentences'>
-        <input type='text' placeholder='enter top sentence..' />
-        <input type='text' placeholder='enter bottom sentence..' />
+        <input
+          type='text'
+          placeholder='enter top sentence..'
+          ref={topTextElememt}
+        />
+        <input
+          type='text'
+          placeholder='enter bottom sentence..'
+          ref={bottomTextElememt}
+        />
       </div>
       <button
         type='submit'
