@@ -5,23 +5,27 @@ import './App.css'
 import Header from './componenets/Header'
 import Meme from './componenets/Meme'
 import Image from './componenets/Image'
-// memesData
-import memesData from './memesData'
 
 const App = () => {
-  const [topText, setTopText] = useState()
-  const [bottomText, setBottomText] = useState()
+  const [topText, setTopText] = useState('')
+  const [bottomText, setBottomText] = useState('')
+  const [changeImage, setChangeImage] = useState(true)
   return (
     <div className='app'>
       <h1>meme projects</h1>
       <Header />
       <Meme
-        setTopText={setTopText}
-        setBottomText={setBottomText}
+        setChangeImage={setChangeImage}
         topText={topText}
         bottomText={bottomText}
+        setTopText={setTopText}
+        setBottomText={setBottomText}
       />
-      <Image topText={topText} bottomText={bottomText} />
+      <Image
+        topText={topText}
+        bottomText={bottomText}
+        changeImage={changeImage}
+      />
     </div>
   )
 }

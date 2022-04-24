@@ -1,11 +1,16 @@
 import React from 'react'
 
-function Meme({ setTopText, setBottomText }) {
+function Meme({
+  setChangeImage,
+  topText,
+  bottomText,
+  setTopText,
+  setBottomText,
+}) {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('i was clicked', e.target.input)
-    setTopText(topTextElememt.current.value)
-    setBottomText(bottomTextElememt.current.value)
+    setChangeImage((prevState) => !prevState)
   }
 
   const topTextElememt = React.useRef()
@@ -15,25 +20,39 @@ function Meme({ setTopText, setBottomText }) {
     console.log(e.target)
     e.target.style.backgroundColor = 'yellow'
   }
+
+  const borderBlur = (e) => {
+    console.log(e.target.style.border)
+    e.target.style.border = '5px solid blue'
+    e.target.style.backgroundColor = 'aqua'
+    setTimeout(() => {
+      e.target.style.border = ''
+      e.target.style.backgroundColor = ''
+    }, 1000)
+  }
   return (
     <form className='form'>
       <div className='input-sentences'>
         <input
           type='text'
           placeholder='enter top sentence..'
-          ref={topTextElememt}
+          value={topText}
+          onChange={(e) => setTopText(e.target.value)}
+          onFocus={borderBlur}
         />
         <input
           type='text'
           placeholder='enter bottom sentence..'
-          ref={bottomTextElememt}
+          onFocus={borderBlur}
+          value={bottomText}
+          onChange={(e) => setBottomText(e.target.value)}
         />
       </div>
       <button
         type='submit'
         className='form-submit'
-        onClick={handleSubmit}
         onMouseEnter={changeBackColor}
+        onClick={handleSubmit}
       >
         Get new meme image
         <img
