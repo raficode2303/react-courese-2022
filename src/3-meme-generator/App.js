@@ -5,26 +5,32 @@ import './App.css'
 import Header from './componenets/Header'
 import Meme from './componenets/Meme'
 import Image from './componenets/Image'
-
+// API URL
+const URL = 'https://api.imgflip.com/get_memes'
+const randomNumber = Math.floor(Math.random() * 33)
 const App = () => {
-  const [topText, setTopText] = useState('')
-  const [bottomText, setBottomText] = useState('')
-  const [changeImage, setChangeImage] = useState(true)
+  const [meme, setMeme] = useState({
+    topText: '',
+    bottomText: '',
+    changeImage: true,
+  })
+
   return (
     <div className='app'>
       <h1>meme projects</h1>
       <Header />
       <Meme
-        setChangeImage={setChangeImage}
-        topText={topText}
-        bottomText={bottomText}
-        setTopText={setTopText}
-        setBottomText={setBottomText}
+        topText={meme.topText}
+        bottomText={meme.bottomText}
+        changeImage={meme.changeImage}
+        setMeme={setMeme}
       />
       <Image
-        topText={topText}
-        bottomText={bottomText}
-        changeImage={changeImage}
+        topText={meme.topText}
+        bottomText={meme.bottomText}
+        changeImage={meme.changeImage}
+        URL={URL}
+        randomNumber={randomNumber}
       />
     </div>
   )

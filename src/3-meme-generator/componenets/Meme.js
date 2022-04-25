@@ -1,24 +1,19 @@
 import React from 'react'
 
-function Meme({
-  setChangeImage,
-  topText,
-  bottomText,
-  setTopText,
-  setBottomText,
-}) {
-  const handleSubmit = (e) => {
+function Meme({ topText, bottomText, changeImage, setMeme }) {
+  const handleChange = (e) => {
+    // handle also with submit button! to change image
     e.preventDefault()
-    console.log('i was clicked', e.target.input)
-    setChangeImage((prevState) => !prevState)
+    const { name, value, type } = e.target
+    console.log(name, value, type)
+    setMeme((prevState) => ({
+      ...prevState,
+      [name]: type === 'submit' ? !changeImage : value,
+    }))
   }
 
-  const topTextElememt = React.useRef()
-  const bottomTextElememt = React.useRef()
-
   const changeBackColor = (e) => {
-    console.log(e.target)
-    e.target.style.backgroundColor = 'yellow'
+    e.target.style.backgroundColor = '#369'
   }
 
   const borderBlur = (e) => {
@@ -35,24 +30,27 @@ function Meme({
       <div className='input-sentences'>
         <input
           type='text'
-          placeholder='enter top sentence..'
+          name='topText'
           value={topText}
-          onChange={(e) => setTopText(e.target.value)}
+          placeholder='enter top sentence..'
+          onChange={handleChange}
           onFocus={borderBlur}
         />
         <input
           type='text'
+          name='bottomText'
+          value={bottomText}
           placeholder='enter bottom sentence..'
           onFocus={borderBlur}
-          value={bottomText}
-          onChange={(e) => setBottomText(e.target.value)}
+          onChange={handleChange}
         />
       </div>
       <button
         type='submit'
+        name='changeImage'
         className='form-submit'
         onMouseEnter={changeBackColor}
-        onClick={handleSubmit}
+        onClick={handleChange}
       >
         Get new meme image
         <img
