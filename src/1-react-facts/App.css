@@ -1,6 +1,14 @@
 /* google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,800;1,800&family=Rubik+Wet+Paint&display=swap');
 
+:root {
+  --navbarbgcolor: #21222a;
+  --mainbgcolor: #282d35;
+  --maincolor: #fff;
+  --lightcolor: #fff;
+  --darkcolor: #000;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -8,19 +16,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: Inter, sans-serif;
-  color: #fff;
+  color: var(--maincolor);
 }
 .app {
-  /* remove */
-  border: solid yellow;
-  /* remove */
   height: 100vh;
 }
 
 .navbar {
   display: flex;
-  background-color: #21222a;
-  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: var(--navbarbgcolor);
   height: 90px;
   padding: 30px 25px;
   box-shadow: 5px 5px #1cc;
@@ -49,7 +57,7 @@ body {
 
 .main {
   background-image: url('../logo512.png');
-  background-color: #282d35;
+  background-color: var(--mainbgcolor);
   height: 500px;
   background-repeat: no-repeat;
   background-size: 300px;
@@ -72,4 +80,63 @@ body {
 .main--facts > li {
   line-height: 19px;
   padding-block: 10px;
+}
+
+/* THEME MODE */
+.theme-container {
+  display: flex;
+  place-items: center;
+  gap: 5px;
+}
+.theme-mode {
+  width: 60px;
+  height: 30px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.theme-mode--button {
+  border-radius: 50%;
+  height: 100%;
+  width: 50%;
+  margin-left: 0%;
+  cursor: pointer;
+}
+
+.theme-option {
+  cursor: pointer;
+}
+.light {
+  background-color: var(--lightcolor);
+}
+.auto {
+  background-color: #ccc;
+}
+.dark {
+  background-color: var(--darkcolor);
+}
+.light-on {
+  color: var(--darkcolor);
+  font-weight: 600;
+}
+.dark-on {
+  color: var(--lightcolor);
+  font-weight: 600;
+}
+.grey {
+  color: grey;
+}
+
+[data-theme='light'] {
+  margin-left: 0%;
+  border: solid var(--darkcolor);
+}
+
+[data-theme='auto'] {
+  margin-left: 25%;
+  border: solid #ccc;
+}
+
+[data-theme='dark'] {
+  margin-left: 50%;
+  border: solid var(--lightcolor);
 }
