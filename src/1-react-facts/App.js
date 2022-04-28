@@ -1,5 +1,3 @@
-// project-1: 31/3/2022
-// adding themeMode with 3 situations(light, auto and dark): 26/4/22 - 7 hours!!
 import React, { useState } from 'react'
 /* styles */
 import './App.css'
