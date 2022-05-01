@@ -14,7 +14,11 @@ export const NavBar = ({ theme, toggleTheme, systemThemeOn }) => {
         toggleTheme={toggleTheme}
         systemThemeOn={systemThemeOn}
       />
-      <SystemTheme toggleTheme={toggleTheme} />
+      <SystemTheme
+        toggleTheme={toggleTheme}
+        theme={theme}
+        systemThemeOn={systemThemeOn}
+      />
     </nav>
   )
 }

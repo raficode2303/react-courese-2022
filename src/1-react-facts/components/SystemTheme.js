@@ -10,10 +10,14 @@ const Button = styled.button`
   font-size: 0.8rem;
   padding: 0.6rem;
 `
-const SystemTheme = ({ toggleTheme }) => {
+const SystemTheme = ({ toggleTheme, theme, systemThemeOn }) => {
   return (
     <div>
-      <Button data-theme='system' onClick={toggleTheme}>
+      <Button
+        data-theme='system'
+        style={{ borderColor: systemThemeOn === 'on' ? 'yellow' : '' }}
+        onClick={toggleTheme}
+      >
         System
       </Button>
     </div>
@@ -21,7 +25,9 @@ const SystemTheme = ({ toggleTheme }) => {
 }
 
 SystemTheme.propTypes = {
+  theme: string.isRequired,
   toggleTheme: func.isRequired,
+  systemThemeOn: string.isRequired,
 }
 
 export default SystemTheme
