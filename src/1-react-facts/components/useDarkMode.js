@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 const localThemeReact = 'local-theme-react'
 
 const getSystemTheme = () => {
-  return window.matchMedia('(prefers-color-scheme: dark)')
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)')
 }
 function useDarkMode() {
   const [theme, setTheme] = useState('light')
