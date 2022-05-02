@@ -1,15 +1,13 @@
 export const lightMode = {
   body: '#fff',
-  text: '#000',
-  toggleBorder: '#fff',
-  background: '#363537',
-  activeTheme: 'yellow',
+  text: '#282c35',
+  toggleBorder: 'yellow',
+  background: '#d23669',
 }
 
 export const darkMode = {
-  body: '#363537',
-  text: '#fafafa',
-  toggleBorder: '#6b8096',
-  background: '#999',
-  activeTheme: 'yellow',
+  body: '#282c35',
+  text: '#fff',
+  toggleBorder: 'green',
+  background: '#ffa7c4',
 }

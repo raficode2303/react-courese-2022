@@ -16,23 +16,6 @@ function App() {
   const [theme, themeToggler, mountedComponent, systemThemeOn] = useDarkMode()
   // styled components //
   const themeMode = theme === 'light' ? lightMode : darkMode
-  //toggle
-
-  // React.useEffect(() => {
-  //   console.log('%crun useEfeect of App', 'color: green')
-  //   const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
-
-  //   // watch for updates
-
-  //   updateTheme(darkThemeMq)
-  //   // listen when theme change by system
-  //   darkThemeMq.addEventListener('change', updateTheme)
-  //   // clean up after ourseelves
-  //   return function cleanup() {
-  //     console.log('%crun useEfeect claenup of App...', 'color: red')
-  //     darkThemeMq.removeEventListener('change', updateTheme)
-  //   }
-  // }, [])
 
   if (!mountedComponent) return <div />
   return (

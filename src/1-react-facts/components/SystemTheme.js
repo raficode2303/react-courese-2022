@@ -4,10 +4,12 @@ import styled from 'styled-components'
 
 const Button = styled.button`
   background: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
   border: 2px solid ${({ theme }) => theme.text};
   border-radius: 30px;
   cursor: pointer;
   font-size: 0.8rem;
+  font-weight: bold;
   padding: 0.6rem;
 `
 const SystemTheme = ({ toggleTheme, theme, systemThemeOn }) => {
