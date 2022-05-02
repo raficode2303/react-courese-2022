@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 const localThemeReact = 'local-theme-react'
 
 const getSystemTheme = () => {
-  return window.matchMedia('(prefers-color-scheme: dark)')
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)')
 }
 function useDarkMode() {
   const [theme, setTheme] = useState('light')
@@ -19,10 +19,10 @@ function useDarkMode() {
   const themeToggler = (e) => {
     const { type } = e
     let newTheme
-    console.log('themeToggler type theme: ', type, systemThemeOn, theme)
+    console.log('type systemThemeOn theme: ', type, systemThemeOn, theme)
     if (type === 'change') {
       if (systemThemeOn === 'off') return
-      newTheme = getSystemTheme().matches ? 'dark' : 'light'
+      newTheme = e.target.matches ? 'dark' : 'light'
       console.log('currentSystemTheme: ', newTheme)
     } else if (e.target.dataset.theme === 'system') {
       newTheme = getSystemTheme().matches ? 'dark' : 'light'
