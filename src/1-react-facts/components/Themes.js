@@ -2,7 +2,7 @@ export const lightMode = {
   body: '#fff',
   text: '#000',
   toggleBorder: '#fff',
-  background: '#363537',
+  background: '#ccc',
 }
 
 export const darkMode = {
