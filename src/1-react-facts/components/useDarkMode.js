@@ -20,21 +20,24 @@ function useDarkMode() {
     const {
       target: { matches },
     } = e
-    const currentSystemTheme = matches ? 'dark' : 'light'
-    if (!systemThemeOn || theme === currentSystemTheme) return
+    console.log('systemThemeOn: ', systemThemeOn)
+    if (!systemThemeOn) return
     console.log('setSystemDarkTheme TO: ---!!', matches)
+
     setSystemDarkTheme((prevState) => matches)
   }
 
   const themeToggler = (e) => {
     let newTheme
     if (e === 'auto') {
-      if (!systemThemeOn) return
       newTheme = getSystemTheme().matches ? 'dark' : 'light'
+      console.log('----auto system theme OS option---')
     } else if (e.target.dataset.theme === 'system') {
+      console.log('----system button option---')
       newTheme = getSystemTheme().matches ? 'dark' : 'light'
-      setSystemThemeOn((prevState) => true)
+      !systemThemeOn && setSystemThemeOn((prevState) => true)
     } else {
+      console.log('----toggle button option---')
       newTheme = theme === 'light' ? 'dark' : 'light'
       setSystemThemeOn((prevState) => false)
     }
@@ -55,9 +58,7 @@ function useDarkMode() {
 
   useEffect(() => {
     console.log('useEffect of darkThemeMq')
-    const darkThemeMq = getSystemTheme()
-    const currentSystemTheme = darkThemeMq.matches ? 'dark' : 'light'
-    if (systemThemeOn && theme != currentSystemTheme) {
+    if (systemThemeOn) {
       themeToggler('auto')
     }
   }, [systemDarkTheme])
