@@ -47,6 +47,7 @@ function useDarkMode() {
     setMountedComponenet(true)
 
     const darkThemeMq = getSystemTheme()
+    console.log('darkThemeMq: ', darkThemeMq)
     darkThemeMq.addEventListener('change', setSystemTheme)
 
     return () => darkThemeMq.removeEventListener('cahnge', setSystemTheme)
