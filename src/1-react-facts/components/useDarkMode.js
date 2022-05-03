@@ -20,7 +20,10 @@ function useDarkMode() {
     const {
       target: { matches },
     } = e
-    console.log('systemThemeOn: ', systemThemeOn)
+    console.log(
+      'System Color Scheme changed and systemThemeOn IS?: ',
+      systemThemeOn
+    )
     if (!systemThemeOn) return
     console.log('setSystemDarkTheme TO: ---!!', matches)
 
