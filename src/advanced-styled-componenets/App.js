@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react'
-import styled, { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
 const Button = styled.button`
+  color: ${(props) =>
+    getSeconds() % 2 === 0 ? props.theme.fg : props.theme.bg};
+  border: 2px solid
+    ${(props) => (getSeconds() % 2 === 0 ? props.theme.bg : props.theme.fg)};
+  background-color: ${(props) =>
+    getSeconds() % 2 === 0 ? props.theme.bg : props.theme.fg};
+
   font-size: 1em;
   margin: 1em;
   padding: 1em;
   border-radius: 3px;
-  border-radius: 3px;
-  color: ${(props) => (getSeconds() % 2 === 0 ? props.theme.main : '#369')};
-  border: 2px solid ${(props) => props.theme.main};
 `
 // we ar passing a default theme for Buttons that arent wrapped in the ThemeProvider
-
 Button.defaultProps = {
   theme: {
     main: 'palevioletred',
@@ -19,14 +22,22 @@ Button.defaultProps = {
 }
 
 // defaine what props.theme will look
-
 const theme = {
-  main: 'mediumseagreen',
+  fg: 'palevioletred',
+  bg: 'white',
 }
 
-function getSeconds() {
-  return new Date().getSeconds()
-}
+// this theme swaps 'fg' and 'bg'
+const invertTheme = ({ fg, bg }) => ({
+  fg: bg,
+  bg: fg,
+})
+
+const GlobalStyles = createGlobalStyle`
+   body {
+     background-color: #369;
+   }
+`
 
 export default function App() {
   const [seconds, setSecond] = useState(getSeconds())
@@ -45,15 +56,29 @@ export default function App() {
   })
   console.log('render App...')
   return (
-    <div>
-      <Button>Noraml</Button>
+    <>
+      <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <Button>Themed</Button>
-        <h1>
-          the seconds is:{' '}
-          {seconds < 10 ? seconds.toString().padStart(2, '0') : seconds}
-        </h1>
+        <div>
+          <Button>default theme</Button>
+          <ThemeProvider theme={invertTheme}>
+            <Button>inverted theme</Button>
+          </ThemeProvider>
+        </div>
+        <Button theme={{ ...theme, bg: 'aqua' }}>Overriden</Button>
       </ThemeProvider>
-    </div>
+      <Button theme={{ bg: 'yellow', fg: 'purple' }}>Ad hoc theme</Button>
+      <h1>
+        the seconds is:{' '}
+        {seconds < 10 ? seconds.toString().padStart(2, '0') : seconds}
+      </h1>
+      <h4> {console.log('Current theme: ', theme)}</h4>
+    </>
   )
 }
+
+function getSeconds() {
+  return new Date().getSeconds()
+}
+
+// I am Noraml
