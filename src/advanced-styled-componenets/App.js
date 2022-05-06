@@ -1,5 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+
+const GlobalStyles = createGlobalStyle`
+   body {
+     background-color: #369;
+   }
+`
+
+const Input = styled.input`
+  padding: 0.5em;
+  margin: 0.5em;
+  color: palegoldenrod;
+  background-color: papayawhip;
+  border: none;
+  border-radius: 3px;
+`
 
 const Button = styled.button`
   color: ${(props) =>
@@ -33,14 +48,27 @@ const invertTheme = ({ fg, bg }) => ({
   bg: fg,
 })
 
-const GlobalStyles = createGlobalStyle`
-   body {
-     background-color: #369;
-   }
-`
+// style objects
+const Box = styled.div({
+  background: 'palevioletred',
+  height: '50px',
+  width: '50px',
+})
 
-export default function App() {
+console.log('Box: ', Box.componentStyle.rules)
+const BoxStyleRules = Box.componentStyle.rules
+// Adapting based on props
+const PropsBox = styled.div((props) => ({
+  background: props.background,
+  borderRadius: '50%',
+  textAlign: 'center',
+  height: '100px',
+  width: '100px',
+}))
+
+function App() {
   const [seconds, setSecond] = useState(getSeconds())
+  const inputRef = useRef()
 
   useEffect(() => {
     console.log('%cuseEfeect run...', 'color: green;')
@@ -58,6 +86,11 @@ export default function App() {
   return (
     <>
       <GlobalStyles />
+      <Input
+        ref={inputRef}
+        placeholder='Hover Over Me'
+        onMouseEnter={() => inputRef.current.focus()}
+      />
       <ThemeProvider theme={theme}>
         <div>
           <Button>default theme</Button>
@@ -72,10 +105,25 @@ export default function App() {
         the seconds is:{' '}
         {seconds < 10 ? seconds.toString().padStart(2, '0') : seconds}
       </h1>
-      <h4> {console.log('Current theme: ', theme)}</h4>
+      <h4 style={{ color: 'white' }}>
+        {' '}
+        Current theme: {JSON.stringify(theme)}
+      </h4>
+      <h2>Style Objects</h2>
+      <Box>styled object</Box>
+      <PropsBox
+        background='blue'
+        height='100px'
+        width='100px'
+        className={Box.styledComponentId}
+      >
+        styled object with props
+      </PropsBox>
     </>
   )
 }
+
+export default App
 
 function getSeconds() {
   return new Date().getSeconds()
