@@ -1,41 +1,56 @@
 import React, { useState } from 'react'
+import { nanoid } from 'nanoid'
 
 // componenets
 import { GlobalStyles } from './components/GlobalStyles'
+import { PreviewMarkDown } from './components/PreviewMarkDown'
 import { SideBarNotes } from './components/SideBarNotes'
 import { WriteMarkDowon } from './components/WriteMarkDowon'
-import { PreviewMarkDown } from './components/PreviewMarkDown'
+
+// CONST
 
 export default function App() {
   const [notes, setNotes] = useState([])
-  const [newNote, setNewNote] = useState('')
+  const [currentNote, setCurrentNote] = useState('')
   const [noteToEditId, setNoteToEditId] = useState(null)
 
   const handleNewNote = (e) => {
-    const currentNote = e.target.value
+    const newNote = e.target.value
+    console.log('newNote: ', newNote)
+    setCurrentNote(newNote)
+
     if (!noteToEditId) {
-      setNewNote({ message: currentNote, id: Date.now().toString() })
+      setCurrentNote(newNote)
     } else {
-      const newNotes = notes.map((note) =>
-        note.id === noteToEditId ? currentNote : note
-      )
-      setNotes(newNotes)
-      setNoteToEditId(null)
     }
   }
 
   const addNote = () => {
-    if (!newNote) return
-    setNotes([...notes, newNote])
-    setNewNote('')
+    // handle edit note
+    if (!currentNote) {
+      alert('Enter message')
+      return
+    }
+    if (noteToEditId) {
+      const newNotes = notes.map((note) =>
+        note.id === noteToEditId ? { ...note, message: currentNote } : note
+      )
+      setNotes(newNotes)
+      setNoteToEditId('')
+    } else {
+      // handle new note
+      const id = nanoid()
+      setNotes([...notes, { message: currentNote, id }])
+    }
   }
 
   const showNote = (id) => {
     const noteToShow = notes.find((note) => note.id === id)
     console.log('noteToShow: ', noteToShow)
-    setNewNote(noteToShow)
+    setCurrentNote(noteToShow.message)
     setNoteToEditId(id)
   }
+  console.log('noteToEditId: ', noteToEditId)
   return (
     <div className='app'>
       <GlobalStyles />
@@ -44,9 +59,10 @@ export default function App() {
         addNote={addNote}
         handleNewNote={handleNewNote}
         showNote={showNote}
+        noteToEditId={noteToEditId}
       />
-      <WriteMarkDowon newNote={newNote} handleNewNote={handleNewNote} />
-      <PreviewMarkDown newNote={newNote} />
+      <WriteMarkDowon currentNote={currentNote} handleNewNote={handleNewNote} />
+      <PreviewMarkDown currentNote={currentNote} />
     </div>
   )
 }
