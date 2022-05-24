@@ -37,6 +37,28 @@ export const GlobalStyles = createGlobalStyle`
     padding: 20px 0;
     font-size: 30px;
   }
- 
+  .text-decoration{
+    display: grid;
+    grid-template-columns: repeat(4, 13%);
+    justify-content: center;
+    padding: 5px;
+list-style: none;
 
+  }
+ .text-decoration li {
+   font-size: 1.3rem;
+   font-weight: bold;
+
+ }
+  .text-decoration li:hover {
+ background-color: #ccc;
+   color: rebeccapurple;
+
+ }
+ button.image-text{
+   font-weight: normal;
+ }
+ .shifted {
+   font-style: oblique;
+ }
 `
