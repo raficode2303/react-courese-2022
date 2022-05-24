@@ -11,11 +11,11 @@ export const GlobalStyles = createGlobalStyle`
 }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #369;
     transition: 0.5 linear;
   }
    .item1{
     grid-area: sidebar;
+    background-color: purple;
   }
   .item2{
     grid-area: write;
@@ -24,15 +24,13 @@ export const GlobalStyles = createGlobalStyle`
     grid-area: preview;
   }
   .app {
-    display: grid;
-    grid-template-areas: 'sidebar write write'
-    'sidebar preview preview';
-    gap: 10px;
-    background-color: #2196f3;
-    padding: 10px;
+margin: 1rem;
+    padding: 3px;
+    border: 3px dotted green;
+    border-radius: 1rem;
   }
+
    .item {
-    background-color: #ffffffcc;
     text-align: center;
     padding: 20px 0;
     font-size: 30px;

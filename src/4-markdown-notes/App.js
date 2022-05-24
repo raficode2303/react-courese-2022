@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { nanoid } from 'nanoid'
-
+// SPlit-it Component
+import Split from 'react-split-it'
+// Split-Style
+import './split-style.css'
 // componenets
 import { GlobalStyles } from './components/GlobalStyles'
 import { PreviewMarkDown } from './components/PreviewMarkDown'
@@ -55,20 +58,24 @@ export default function App() {
   return (
     <div className='app'>
       <GlobalStyles />
-      <SideBarNotes
-        notes={notes}
-        addNote={addNote}
-        handleNewNote={handleNewNote}
-        showNote={showNote}
-        noteToEditId={noteToEditId}
-      />
-      <WriteMarkDowon
-        currentNote={currentNote}
-        handleNewNote={handleNewNote}
-        boldText={boldText}
-        setBoldText={setBoldText}
-      />
-      <PreviewMarkDown currentNote={currentNote} />
+      <Split>
+        <SideBarNotes
+          notes={notes}
+          addNote={addNote}
+          handleNewNote={handleNewNote}
+          showNote={showNote}
+          noteToEditId={noteToEditId}
+        />
+        <Split direction='vertical'>
+          <WriteMarkDowon
+            currentNote={currentNote}
+            handleNewNote={handleNewNote}
+            boldText={boldText}
+            setBoldText={setBoldText}
+          />
+          <PreviewMarkDown currentNote={currentNote} />
+        </Split>
+      </Split>
     </div>
   )
 }

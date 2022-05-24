@@ -15,7 +15,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 const WriteStyled = styled.div`
-  background-color: #ffffffcc;
+  height: 100%;
+  background-color: aliceblue;
 `
 const defaultNote = '# Type your markdown note"s here'
 
@@ -75,11 +76,11 @@ export const WriteMarkDowon = ({
       <textarea
         name=''
         id=''
-        cols='70'
+        cols='37'
         rows='20'
         onChange={handleNewNote}
         placeholder={defaultNote}
-        value={`${boldText ? '**' : ''} ${currentNote} ${boldText ? '**' : ''}`}
+        value={currentNote}
       />
     </WriteStyled>
   )
