@@ -38,27 +38,33 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 30px;
   }
   .text-decoration{
+    width: 50%;
     display: grid;
     grid-template-columns: repeat(4, 13%);
-    justify-content: center;
+    justify-content: end;
     padding: 5px;
-list-style: none;
+   list-style: none;
 
   }
- .text-decoration li {
+ .fontAwesomeIcon {
+        width: 2rem;
+        min-width: fit-content;
+        border-radius: 4px;
    font-size: 1.3rem;
    font-weight: bold;
 
  }
-  .text-decoration li:hover {
+  .fontAwesomeIcon:hover {
  background-color: #ccc;
    color: rebeccapurple;
 
  }
- button.image-text{
-   font-weight: normal;
- }
- .shifted {
-   font-style: oblique;
- }
+.fontAwesomeIcon:active {
+  background-color: #cc2;
+    color: green;
+
+}
+.border-inset {
+  border-style: inset;
+}
 `

@@ -13,6 +13,7 @@ export default function App() {
   const [notes, setNotes] = useState([])
   const [currentNote, setCurrentNote] = useState('')
   const [noteToEditId, setNoteToEditId] = useState(null)
+  const [boldText, setBoldText] = useState(false)
 
   const handleNewNote = (e) => {
     const newNote = e.target.value
@@ -61,7 +62,12 @@ export default function App() {
         showNote={showNote}
         noteToEditId={noteToEditId}
       />
-      <WriteMarkDowon currentNote={currentNote} handleNewNote={handleNewNote} />
+      <WriteMarkDowon
+        currentNote={currentNote}
+        handleNewNote={handleNewNote}
+        boldText={boldText}
+        setBoldText={setBoldText}
+      />
       <PreviewMarkDown currentNote={currentNote} />
     </div>
   )

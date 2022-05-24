@@ -7,6 +7,6 @@ const PreviewStyled = styled.div`
 export const PreviewMarkDown = ({ currentNote }) => (
   <PreviewStyled className='item item3'>
     <h3>this is the preview</h3>
-    <ReactMarkdown>{currentNote?.toUpperCase()}</ReactMarkdown>
+    <ReactMarkdown>{currentNote}</ReactMarkdown>
   </PreviewStyled>
 )
