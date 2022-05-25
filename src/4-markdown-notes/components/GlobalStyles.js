@@ -13,15 +13,11 @@ export const GlobalStyles = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     transition: 0.5 linear;
   }
-   .item1{
-    grid-area: sidebar;
-    background-color: purple;
-  }
+
   .item2{
-    grid-area: write;
+    max-height: calc(100vh - 6rem);
   }
   .item3{
-    grid-area: preview;
   }
   .app {
 margin: 1rem;
@@ -43,6 +39,12 @@ margin: 1rem;
     padding: 5px;
    list-style: none;
 
+  }
+  textarea {
+    resize: vertical;
+    max-height: 100%;
+    min-width: 98%;
+    max-width: 100%;
   }
  .fontAwesomeIcon {
         width: 2rem;

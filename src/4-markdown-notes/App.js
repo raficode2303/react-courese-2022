@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { nanoid } from 'nanoid'
 // SPlit-it Component
 import Split from 'react-split-it'
@@ -18,6 +18,7 @@ export default function App() {
   const [noteToEditId, setNoteToEditId] = useState(null)
   const [boldText, setBoldText] = useState(false)
 
+  useEffect(() => {}, [])
   const handleNewNote = (e) => {
     const newNote = e.target.value
     console.log('newNote: ', newNote)

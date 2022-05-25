@@ -1,7 +1,7 @@
+import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 const DivStyled = styled.div`
-  background-color: purple;
   height: 100vh;
   button {
     cursor: pointer;
@@ -21,9 +21,14 @@ const DivStyled = styled.div`
 `
 
 export const SideBarNotes = ({ addNote, notes, showNote, noteToEditId }) => {
+  const item1Ref = useRef()
+  useEffect(() => {
+    item1Ref.current.parentElement.style.backgroundColor = 'purple'
+  }, [])
+
   console.log('sidebar notes length', notes)
   return (
-    <DivStyled className='item item1'>
+    <DivStyled className='item item1' ref={item1Ref}>
       <h2>
         Notes
         <button className='add-note' onClick={addNote}>

@@ -1,14 +1,21 @@
+import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
 const PreviewStyled = styled.div`
   height: 100%;
   width: 100%;
-  background-color: aquamarine;
 `
-export const PreviewMarkDown = ({ currentNote }) => (
-  <PreviewStyled className='item item3'>
-    <h3>this is the preview</h3>
-    <ReactMarkdown>{currentNote}</ReactMarkdown>
-  </PreviewStyled>
-)
+export const PreviewMarkDown = ({ currentNote }) => {
+  const item3Ref = useRef()
+  useEffect(() => {
+    item3Ref.current.parentElement.style.backgroundColor = 'aquamarine'
+  }, [])
+
+  return (
+    <PreviewStyled className='item item3' ref={item3Ref}>
+      <h3>this is the preview</h3>
+      <ReactMarkdown>{currentNote}</ReactMarkdown>
+    </PreviewStyled>
+  )
+}
