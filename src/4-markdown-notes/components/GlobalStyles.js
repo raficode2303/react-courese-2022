@@ -24,8 +24,17 @@ margin: 1rem;
     padding: 3px;
     border: 3px dotted green;
     border-radius: 1rem;
+    max-width: 62%;
+    margin: -3.5rem  auto;
+    padding: 1rem;
+    transform: scaleY(0.85);
+    background-color: #369;
   }
-
+.app-name{
+  color: yellow;
+  text-align: center;
+  font-weight: 700;
+}
    .item {
     text-align: center;
     padding: 20px 0;
@@ -45,6 +54,7 @@ margin: 1rem;
     max-height: 100%;
     min-width: 98%;
     max-width: 100%;
+    font-size: 2rem;
   }
  .fontAwesomeIcon {
         width: 2rem;

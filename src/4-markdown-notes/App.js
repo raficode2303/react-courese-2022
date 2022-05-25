@@ -58,6 +58,7 @@ export default function App() {
   console.log('noteToEditId: ', noteToEditId)
   return (
     <div className='app'>
+      <h2 className='app-name'>MarkDown Notes App</h2>
       <GlobalStyles />
       <Split>
         <SideBarNotes
