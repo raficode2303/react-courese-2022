@@ -62,6 +62,12 @@ export default function App() {
     setCurrentNote(noteToShow.message)
     setNoteToEditId(id)
   }
+
+  const deleteNote = (id) => {
+    setNotes(notes.filter((note) => note.id !== id))
+    setNoteToEditId('')
+    setCurrentNote('')
+  }
   console.log('noteToEditId: ', noteToEditId)
   return (
     <div className='app'>
@@ -74,6 +80,7 @@ export default function App() {
           handleNewNote={handleNewNote}
           showNote={showNote}
           noteToEditId={noteToEditId}
+          deleteNote={deleteNote}
         />
         <Split direction='vertical'>
           <WriteMarkDowon

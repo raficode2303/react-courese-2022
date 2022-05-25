@@ -20,7 +20,13 @@ const DivStyled = styled.div`
   }
 `
 
-export const SideBarNotes = ({ addNote, notes, showNote, noteToEditId }) => {
+export const SideBarNotes = ({
+  addNote,
+  notes,
+  showNote,
+  noteToEditId,
+  deleteNote,
+}) => {
   const item1Ref = useRef()
   useEffect(() => {
     item1Ref.current.parentElement.style.backgroundColor = 'purple'
@@ -36,12 +42,15 @@ export const SideBarNotes = ({ addNote, notes, showNote, noteToEditId }) => {
         </button>
       </h2>
       {notes?.map((note, index) => (
-        <p
-          key={note.id}
-          onClick={() => showNote(note.id)}
-          className={note.id === noteToEditId ? 'edit-note' : ''}
-        >
-          Note{index + 1}
+        <p key={note.id}>
+          <span
+            key={note.id}
+            onClick={() => showNote(note.id)}
+            className={note.id === noteToEditId ? 'edit-note' : ''}
+          >
+            Note{index + 1}
+          </span>
+          <button onClick={() => deleteNote(note.id)}>delete</button>
         </p>
       ))}
     </DivStyled>
