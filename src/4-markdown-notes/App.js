@@ -10,15 +10,22 @@ import { PreviewMarkDown } from './components/PreviewMarkDown'
 import { SideBarNotes } from './components/SideBarNotes'
 import { WriteMarkDowon } from './components/WriteMarkDowon'
 
-// CONST
+const getLocalNotes = () => {
+  return JSON.parse(localStorage.getItem('reacct-mark-down-notes')) || []
+}
 
 export default function App() {
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState(getLocalNotes())
   const [currentNote, setCurrentNote] = useState('')
   const [noteToEditId, setNoteToEditId] = useState(null)
   const [boldText, setBoldText] = useState(false)
 
-  useEffect(() => {}, [])
+  const updateLocalNotes = () => {
+    localStorage.setItem('reacct-mark-down-notes', JSON.stringify(notes))
+  }
+  useEffect(() => {
+    updateLocalNotes()
+  }, [notes])
   const handleNewNote = (e) => {
     const newNote = e.target.value
     console.log('newNote: ', newNote)
