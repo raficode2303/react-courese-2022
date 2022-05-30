@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { nanoid } from 'nanoid'
+import React, { useEffect, useState } from 'react'
 // SPlit-it Component
 import Split from 'react-split-it'
 // Split-Style
@@ -11,13 +10,17 @@ import { SideBarNotes } from './components/SideBarNotes'
 import { WriteMarkDowon } from './components/WriteMarkDowon'
 
 const getLocalNotes = () => {
+  console.log('%c geeting localstorage', 'border: solid')
   return JSON.parse(localStorage.getItem('reacct-mark-down-notes')) || []
 }
 
 export default function App() {
-  const [notes, setNotes] = useState(getLocalNotes())
+  const [notes, setNotes] = useState(() => getLocalNotes())
   const [currentNote, setCurrentNote] = useState('')
   const [noteToEditId, setNoteToEditId] = useState(null)
+  const [noteName, setNoteName] = useState('')
+  const [isImportantNote, setIsImportantNote] = useState(false)
+
   const [boldText, setBoldText] = useState(false)
 
   const updateLocalNotes = () => {
@@ -37,37 +40,15 @@ export default function App() {
     }
   }
 
-  const addNote = () => {
-    // handle edit note
-    if (!currentNote) {
-      alert('Enter message')
-      return
-    }
-    if (noteToEditId) {
-      const newNotes = notes.map((note) =>
-        note.id === noteToEditId ? { ...note, message: currentNote } : note
-      )
-      setNotes(newNotes)
-      setNoteToEditId('')
-    } else {
-      // handle new note
-      const id = nanoid()
-      setNotes([...notes, { message: currentNote, id }])
-    }
-  }
-
   const showNote = (id) => {
     const noteToShow = notes.find((note) => note.id === id)
     console.log('noteToShow: ', noteToShow)
     setCurrentNote(noteToShow.message)
+    setNoteName(noteToShow.name ? noteToShow.name : '')
+    setIsImportantNote(noteToShow.important)
     setNoteToEditId(id)
   }
 
-  const deleteNote = (id) => {
-    setNotes(notes.filter((note) => note.id !== id))
-    setNoteToEditId('')
-    setCurrentNote('')
-  }
   console.log('noteToEditId: ', noteToEditId)
   return (
     <div className='app'>
@@ -76,11 +57,16 @@ export default function App() {
       <Split>
         <SideBarNotes
           notes={notes}
-          addNote={addNote}
+          setNotes={setNotes}
           handleNewNote={handleNewNote}
           showNote={showNote}
           noteToEditId={noteToEditId}
-          deleteNote={deleteNote}
+          setNoteToEditId={setNoteToEditId}
+          setCurrentNote={setCurrentNote}
+          currentNote={currentNote}
+          noteName={noteName}
+          isImportantNote={isImportantNote}
+          setIsImportantNote={setIsImportantNote}
         />
         <Split direction='vertical'>
           <WriteMarkDowon
@@ -88,6 +74,10 @@ export default function App() {
             handleNewNote={handleNewNote}
             boldText={boldText}
             setBoldText={setBoldText}
+            noteName={noteName}
+            setNoteName={setNoteName}
+            isImportantNote={isImportantNote}
+            setIsImportantNote={setIsImportantNote}
           />
           <PreviewMarkDown currentNote={currentNote} />
         </Split>

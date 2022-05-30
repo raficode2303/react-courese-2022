@@ -24,7 +24,7 @@ margin: 1rem;
     padding: 3px;
     border: 3px dotted green;
     border-radius: 1rem;
-    max-width: 62%;
+    width: max(62%, 700px);
     margin: -3.5rem  auto;
     padding: 1rem;
     transform: scaleY(0.85);
@@ -36,45 +36,10 @@ margin: 1rem;
   font-weight: 700;
 }
    .item {
+     overflow: auto;
     text-align: center;
     padding: 20px 0;
     font-size: 30px;
   }
-  .text-decoration{
-    width: 50%;
-    display: grid;
-    grid-template-columns: repeat(4, 13%);
-    justify-content: end;
-    padding: 5px;
-   list-style: none;
 
-  }
-  textarea {
-    resize: vertical;
-    max-height: 100%;
-    min-width: 98%;
-    max-width: 100%;
-    font-size: 2rem;
-  }
- .fontAwesomeIcon {
-        width: 2rem;
-        min-width: fit-content;
-        border-radius: 4px;
-   font-size: 1.3rem;
-   font-weight: bold;
-
- }
-  .fontAwesomeIcon:hover {
- background-color: #ccc;
-   color: rebeccapurple;
-
- }
-.fontAwesomeIcon:active {
-  background-color: #cc2;
-    color: green;
-
-}
-.border-inset {
-  border-style: inset;
-}
 `
