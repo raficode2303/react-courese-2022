@@ -17,6 +17,7 @@
     "react-scripts": "5.0.0",
     "react-split": "^2.0.14",
     "react-split-it": "^2.0.0",
+    "remark-gfm": "^3.0.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },

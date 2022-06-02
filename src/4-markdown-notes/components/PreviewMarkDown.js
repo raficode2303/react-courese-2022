@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 const PreviewStyled = styled.div`
   height: 100%;
@@ -15,7 +16,9 @@ export const PreviewMarkDown = ({ currentNote }) => {
   return (
     <PreviewStyled className='item item3' ref={item3Ref}>
       <h3>this is the preview</h3>
-      <ReactMarkdown>{currentNote}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
+        {currentNote}
+      </ReactMarkdown>
     </PreviewStyled>
   )
 }

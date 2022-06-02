@@ -71,6 +71,7 @@ export default function App() {
         <Split direction='vertical'>
           <WriteMarkDowon
             currentNote={currentNote}
+            setCurrentNote={setCurrentNote}
             handleNewNote={handleNewNote}
             boldText={boldText}
             setBoldText={setBoldText}

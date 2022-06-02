@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import {
   faHeading,
   faBold,
@@ -65,6 +66,7 @@ export const WriteMarkDowon = ({
   setBoldText,
   noteName,
   setNoteName,
+  setCurrentNote,
   isImportantNote,
   setIsImportantNote,
 }) => {
@@ -79,7 +81,57 @@ export const WriteMarkDowon = ({
   }
 
   const toggleOutset = (e) => {
+    let textFeatureOff
     e.currentTarget.classList.toggle('border-inset')
+    const isTextFeatureOn = e.currentTarget.classList.contains('border-inset')
+    const textfeature = e.currentTarget.firstChild.classList[1]
+    console.log(textfeature)
+    switch (textfeature) {
+      case 'fa-heading':
+        if (isTextFeatureOn) setCurrentNote((prevNote) => `# ${prevNote}`)
+        else {
+          textFeatureOff = currentNote.split('# ')
+          setCurrentNote(textFeatureOff.join(''))
+        }
+        break
+      case 'fa-bold':
+        if (isTextFeatureOn) setCurrentNote((prevNote) => `**${prevNote}**`)
+        else {
+          textFeatureOff = currentNote.split('**')
+          setCurrentNote(textFeatureOff.join(''))
+        }
+        console.log('currentNote: ', currentNote)
+        break
+      case 'fa-italic':
+        if (isTextFeatureOn) setCurrentNote((prevNote) => `_${prevNote}_`)
+        else {
+          textFeatureOff = currentNote.split('_')
+          setCurrentNote(textFeatureOff.join(''))
+        }
+        break
+      case 'fa-strikethrough':
+        if (isTextFeatureOn) setCurrentNote((prevNote) => `~~${prevNote}~~`)
+        else {
+          textFeatureOff = currentNote.split('~~')
+          setCurrentNote(textFeatureOff.join(''))
+        }
+        break
+
+      case 'fa-link':
+        // alert('fa-strikethrough')
+        break
+      case 'fa-quote-right':
+        // alert('fa-strikethrough')
+        break
+      case 'fa-code':
+        // alert('fa-strikethrough')
+        break
+      case 'fa-image':
+        // alert('fa-strikethrough')
+        break
+      default:
+        break
+    }
   }
   return (
     <WriteStyled className='item item2' ref={item2Ref}>
