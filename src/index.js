@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 // import './index.css'
-import App from './4-markdown-notes/App'
+import Index from './5-tenzies'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<Index />, document.getElementById('root'))

@@ -56,6 +56,10 @@ const WriteStyled = styled.div`
     color: #fff;
     background-color: rgba(0, 0, 255, 0.1);
   }
+  label[for='important-note'] {
+    font-size: 0.9rem;
+    color: red;
+  }
 `
 const defaultNote = '# Type your markdown note"s here'
 
@@ -177,6 +181,7 @@ export const WriteMarkDowon = ({
         value={noteName}
         onChange={handleNoteName}
       />
+      <label htmlFor='important-note'>is important?</label>
       <input
         type='checkbox'
         name='important-note'
