@@ -12,8 +12,8 @@ import { Context } from '../../context'
 import Canvas from '../Canvas'
 
 function Header() {
-  const [player] = React.useContext(Context)
-  console.log('player is :', player)
+  const { playerId } = React.useContext(Context)
+  console.log('playerId is :', playerId)
 
   return (
     <Wrapper>
@@ -21,10 +21,10 @@ function Header() {
         <Link to='/'>
           <LogoImg src={tenziesLogo} alt='tenzies-logo' />
         </Link>
-        {player ? (
+        {playerId ? (
           <div>
-            <span>Player as: {player.username}</span>
-            <Canvas draw={player.username[0]} />
+            <span>PlayerIdplayerId as: {playerId.username}</span>
+            <Canvas draw={playerId.username[0]} />
           </div>
         ) : (
           <Link to='/login'>

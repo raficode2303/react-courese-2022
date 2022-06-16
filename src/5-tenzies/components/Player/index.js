@@ -1,7 +1,7 @@
 import React from 'react'
 
-function Player() {
-  return <div>Player</div>
+function Player({ resultId }) {
+  return <div>Player {resultId}</div>
 }
 
 export default Player

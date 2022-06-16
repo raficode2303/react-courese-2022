@@ -1,45 +1,43 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 // Components
 import Grid from './Grid'
-import Thumb from './Thumb'
+import Dice from './Dice'
 import Spinner from './Spinner'
 import Instructions from './Instructions'
+import RollButton from '../RollButton'
 
 // Hook
 import { useHomeFetch } from '../hooks/useHomeFetch'
-// UNIQUE KEY
-import { nanoid } from 'nanoid'
+
+import { Context } from '../context'
+import Confetti from 'react-confetti'
 
 const Home = () => {
-  const [playerId, setPlayerId] = React.useState(0)
-  const { state, loading, error } = useHomeFetch({
-    playerId,
-    setPlayerId,
-  })
-  console.log(
-    'state loading error player and setPlayerId at useHomeFetch: ',
-    state,
-    loading,
-    error,
-    playerId,
-    setPlayerId
-  )
+  const { error, state, loading, checkIfWon } = useContext(Context)
   if (error) return <div>Something went Wrong...</div>
-  console.log('state and playerId at Home: ', state, playerId)
   return (
     <>
       <Instructions />
+      {checkIfWon && <Confetti />}
       {state ? (
         <>
-          {console.log('state[playerId]: ', state[playerId], playerId)}
-          <h3>Rolls for Player: {state[playerId].name}</h3>
+          <h3>Rolls for Player: {state[0].position}</h3>
           <Grid>
-            {state[playerId].results.map((result) => {
-              const nanoKey = nanoid()
-              return <Thumb key={nanoKey} clickable resultId={result} />
+            {state.map((dice, index) => {
+              console.log('dice: ', dice)
+              return (
+                <Dice
+                  key={dice.id}
+                  id={dice.id}
+                  clickable
+                  isFixed={dice.isFixed}
+                  diceNumber={dice.diceNumber}
+                />
+              )
             })}
           </Grid>
+          <RollButton />
         </>
       ) : (
         <Spinner />
