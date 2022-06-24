@@ -27,9 +27,9 @@ function Header() {
             <Canvas draw={playerId.username[0]} />
           </div>
         ) : (
-          <Link to='/login'>
-            <span>Log In.</span>
+          <Link to='/login' className='login-link'>
             <Canvas draw='avatar' />
+            <span>Log In.</span>
           </Link>
         )}
         <FUNGAMESLogoImg src={FUNGAMESLogo} alt='fun-games-logo' />

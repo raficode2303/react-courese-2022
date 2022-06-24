@@ -6,30 +6,33 @@ export const Wrapper = styled.div`
 `
 export const Content = styled.div`
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: space-between;
   max-width: var(--maxWidth);
   padding: 20px 0;
   margin: 0 auto;
 
   color: var(--white);
 
-  a {
+  a.login-link {
+    min-width: fit-content;
+    min-height: 100%;
     color: var(--white);
     text-decoration: none;
+    border: 5px double #369;
   }
 `
 
 export const LogoImg = styled.img`
-  width: 200px;
+  width: 56%;
 
   @media screen and (max-width: 500px) {
-    width: 150px;
+    width: 90%;
   }
 `
 
 export const FUNGAMESLogoImg = styled.img`
-  width: 100px;
+  width: 35%;
 
   @media screen and (max-width: 500px) {
     width: 80px;

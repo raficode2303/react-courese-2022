@@ -22,7 +22,7 @@ const Home = () => {
       {checkIfWon && <Confetti />}
       {state ? (
         <>
-          <h3>Rolls for Player: {state[0].position}</h3>
+          <h3>Player Name: {state[0].position || 'Anonymous'}</h3>
           <Grid>
             {state.map((dice, index) => {
               console.log('dice: ', dice)
