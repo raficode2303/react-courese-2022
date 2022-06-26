@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
+
   :root {
     --mainColor: #645cff80;
     --secondColor: #645cff;
