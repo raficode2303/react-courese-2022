@@ -9,6 +9,7 @@ const colorBg = 'hsl(323, 21%, 16%)'
 // some fvaourite colors
 const color1 = 'hsl(170, 100%, 78%)'
 const color2 = 'hsl(78, 91%, 65%)'
+const color4 = 'hsl(193, 97%, 55%)'
 
 const bgcolor3 = '#240253'
 const olor3 = 'hsl(174, 92%, 66%)'
