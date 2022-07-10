@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { DarkThemeToggle, BallTheme, Main } from './DarkMode.styles'
+import { DarkThemeToggle, BallTheme, Main, Gradient } from './DarkMode.styles'
 
 DarkThemeToggle.defaultProps = {
   theme: {
@@ -43,6 +43,7 @@ function App() {
     window.matchMedia('(prefers-color-scheme: dark)')
   )
 
+  const buttonRef = React.useRef()
   React.useEffect(() => {
     console.log('enter setLocalStorage')
     localStorage.setItem('user-theme', isDarkMode ? 'dark' : 'light')
@@ -63,6 +64,7 @@ function App() {
     mql.addEventListener('change', toggleTheme)
     console.log('run watch matchmedia')
     setIsLoading(() => false)
+
     return () => {
       return mql.removeEventListener('change', toggleTheme)
     }
@@ -81,106 +83,132 @@ function App() {
     <ThemeProvider theme={theme}>
       <ThemeProvider theme={isDarkMode ? invertTheme : theme}>
         <Main>
-          <ThemeProvider theme={invertTheme}>
-            <DarkThemeToggle>
-              <ThemeProvider theme={invertTheme}>
-                <BallTheme
-                  isDarkMode={isDarkMode}
-                  onClick={changeTHeme}
-                ></BallTheme>
-              </ThemeProvider>
-            </DarkThemeToggle>
-          </ThemeProvider>
-          <label htmlFor='theme-mode'>System Theme? </label>
-          <input
-            type='checkbox'
-            name='theme-mode'
-            id='theme-mode'
-            checked={isSystemTheme}
-            onChange={() => setIsSystemTheme((prev) => !prev)}
-          />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-            fugit voluptas similique doloremque facilis, quas sint, repudiandae
-            deserunt, soluta vel quae. In sequi totam ullam atque minima neque,
-            sunt cupiditate? Eligendi inventore odit laboriosam minus minima
-            rerum enim vel molestias expedita ad, suscipit omnis nemo neque?
-            Sequi dolore accusantium aliquam! Laborum eum fugit nihil corrupti
-            in dolore odit adipisci repudiandae! Iure officiis alias unde a.
-            Perferendis earum maiores corporis quia est. Odio ducimus nulla est
-            unde, excepturi ex necessitatibus asperiores deleniti impedit quidem
-            accusamus explicabo dolor sed delectus dolorem commodi! Optio
-            laboriosam cumque aspernatur omnis voluptates doloremque vitae unde
-            nemo id voluptate quis exercitationem maiores magnam veniam, alias
-            esse reiciendis? Beatae nesciunt nostrum cupiditate? Cum odio ullam
-            iste saepe eligendi. Optio, voluptatibus. Adipisci, molestiae!
-            Blanditiis deserunt rem sapiente aliquam provident minus quae?
-            Dignissimos magnam at aspernatur beatae dolorum id laboriosam natus
-            ad velit quae? Quos consectetur officiis ratione adipisci non.
-            Provident temporibus ipsa obcaecati possimus molestias quam natus
-            quo non deserunt sit omnis, praesentium exercitationem aspernatur
-            accusantium a nobis odit asperiores impedit, corrupti ea optio et
-            molestiae tempore earum. Dicta? Ad quia consequuntur modi placeat,
-            quidem reprehenderit nihil aliquam odit et libero possimus tenetur
-            soluta architecto deleniti? Dolores, dicta molestias! Explicabo modi
-            corporis earum suscipit deleniti veniam dolor sapiente quaerat?
-            Neque quod repellendus, reprehenderit labore, quasi eligendi fugit
-            sint iusto aspernatur placeat harum magnam minus perferendis. Quidem
-            at nisi molestias eveniet tempora totam ipsum ut, cum sequi,
-            repellat ullam necessitatibus! Suscipit exercitationem saepe iste ex
-            quidem, necessitatibus earum nostrum similique assumenda
-            perspiciatis, neque voluptate reiciendis debitis rem veritatis id
-            beatae, veniam inventore ratione nisi officia in? Dolor incidunt
-            blanditiis distinctio. Hic natus veritatis illum tempora ab
-            assumenda laboriosam deserunt ducimus corrupti libero. Id laborum
-            cum voluptas eligendi eum nesciunt nostrum, odit soluta, fugiat
-            reiciendis facere accusantium consequatur ducimus hic provident.
-            Natus numquam officiis at mollitia temporibus consequuntur
-            cupiditate libero. Quam saepe id amet obcaecati, recusandae neque
-            quibusdam molestiae omnis itaque minima, ea provident repellendus
-            totam! Dolorem sed sunt accusamus ex. Soluta deleniti esse saepe et
-            velit, aspernatur nihil tempore repellat odit. Atque, deserunt
-            dolores. Quis, non natus consequuntur amet at eos nulla, dolor error
-            quidem aliquid dicta corporis vero debitis? Saepe veritatis nesciunt
-            aut atque nulla cumque, cum harum deserunt quis, aperiam quas
-            perspiciatis aliquam nemo accusantium ullam velit ex quidem ipsa
-            veniam consequatur provident quod libero. Veritatis, aliquam quam.
-            Porro quos dolorum voluptatum dolore quisquam, enim aliquid ullam
-            tenetur accusamus mollitia, amet repudiandae. Soluta voluptatum
-            praesentium adipisci doloribus accusamus ab, ratione corporis
-            veritatis similique non molestiae illo placeat totam. Architecto, ab
-            alias earum iure corrupti cumque suscipit, veritatis vitae corporis
-            nesciunt veniam necessitatibus temporibus aspernatur vero, atque est
-            laborum nam perferendis saepe! Soluta non labore culpa, animi modi
-            praesentium? Id iste earum ratione rem tempore asperiores fugiat,
-            saepe delectus fugit ipsam aut molestiae et necessitatibus ex ullam.
-            Numquam mollitia quos at nemo quis incidunt ipsam, voluptatum vitae
-            fugit quibusdam. Ipsum maxime nulla blanditiis, sunt corporis
-            voluptatem maiores delectus recusandae fuga incidunt, impedit labore
-            explicabo neque voluptate illo dicta, veniam id exercitationem
-            nesciunt tempore perferendis? Nemo dolorem consequuntur cum
-            voluptas. Ut pariatur at repellendus fugit voluptatum cupiditate
-            distinctio nesciunt assumenda. Saepe facilis iusto, optio
-            reiciendis, nemo ratione excepturi doloribus commodi assumenda,
-            minima exercitationem mollitia ut asperiores. Ipsam praesentium quod
-            deserunt. Cupiditate eligendi exercitationem nihil ex. Ipsum placeat
-            maxime ut? Non tenetur accusantium magnam eveniet id tempora. Ad
-            consequuntur commodi neque cumque molestiae odit, repellendus,
-            nostrum iusto sequi similique quos veritatis. Dolorem atque
-            dignissimos culpa odit quo sed, quis pariatur rerum minus architecto
-            id incidunt ab. Porro nobis iste recusandae pariatur deserunt aut
-            culpa debitis veniam vitae, sunt ratione illum? Non. Incidunt nulla
-            ipsum perspiciatis veniam impedit, numquam cupiditate aliquid
-            laboriosam tempora accusamus in nam sapiente iure laudantium ipsam
-            doloribus! Eveniet dolor ut consequatur ea error aperiam veniam
-            iusto possimus quibusdam! Commodi incidunt dolores minima. Qui id
-            consequatur eveniet excepturi vel laudantium corrupti nihil in esse
-            dignissimos alias recusandae sequi voluptates fugiat explicabo
-            sapiente, magnam quae veniam beatae, placeat quos at. Mollitia
-            quaerat molestiae ipsa voluptatem illum sequi in neque maxime id
-            soluta facere, ipsam corrupti eveniet adipisci ut, aperiam velit!
-            Ipsa hic totam quo eaque numquam recusandae quasi sed enim.
-          </p>
+          <div className='sticky'>
+            <ThemeProvider theme={invertTheme}>
+              <DarkThemeToggle>
+                <ThemeProvider theme={invertTheme}>
+                  <BallTheme
+                    isDarkMode={isDarkMode}
+                    onClick={changeTHeme}
+                  ></BallTheme>
+                </ThemeProvider>
+              </DarkThemeToggle>
+            </ThemeProvider>
+            <label htmlFor='theme-mode'>System Theme? </label>
+            <input
+              type='checkbox'
+              name='theme-mode'
+              id='theme-mode'
+              checked={isSystemTheme}
+              onChange={() => setIsSystemTheme((prev) => !prev)}
+            />
+            <ul>
+              <a href='#about'>about</a>
+              <a href='#contact'>contact</a>
+              <a href='#info'>info</a>
+            </ul>
+          </div>
+          <Gradient className='gradients'>hello</Gradient>
+          <button
+            className='btn'
+            role={'button'}
+            id='button'
+            ref={buttonRef}
+            onClick={() =>
+              console.log(
+                window
+                  .getComputedStyle(buttonRef.current, null)
+                  .getPropertyValue('font-size')
+              )
+            }
+          >
+            I'm A Button!
+          </button>
+          <form className='flow' onClick={() => 'reuturn;'}>
+            <label htmlFor='email'>Email</label>
+            <input type='email' name='email' id='email' />
+            <div className='error'></div>
+            <button type='submit'>Submit</button>
+          </form>
+          <div className='error'>is error?</div>
+          <div id='about'>
+            ABOUT ipsum dolor sit amet consectetur adipisicing elit. Neque
+            dignissimos modi error, minus harum corrupti ut facere expedita
+            nulla voluptates non aliquam adipisci in sunt, ducimus quasi
+            explicabo, dolorum dolor ipsum quaerat obcaecati veritatis unde.
+            Dignissimos ea, incidunt nihil consequatur quos mollitia omnis quod
+            aliquid maiores aliquam necessitatibus! Et, reiciendis explicabo
+            odio aut nihil voluptas dolorum itaque sunt distinctio! Sapiente,
+            sed recusandae cupiditate, molestiae mollitia, nihil consequuntur
+            repudiandae blanditiis omnis iusto praesentium nisi sunt odio nulla.
+            Ipsum quaerat atque, deleniti delectus inventore libero magnam
+            facilis quidem deserunt dolorum, voluptas possimus eum. Enim, harum
+            ipsam! Optio nulla facere cupiditate necessitatibus minus
+            consectetur rerum a illum id ipsam. Libero ab at voluptatum beatae
+            sint maiores illo qui ducimus corrupti! Assumenda animi ad quaerat
+            ullam veritatis architecto deserunt eius adipisci unde obcaecati,
+            ducimus nisi doloribus, deleniti consequuntur, reiciendis laboriosam
+            incidunt fugiat laudantium libero? Quibusdam ratione corporis
+            provident nihil inventore sit maiores totam assumenda nobis
+            accusamus blanditiis, repellendus non nemo fugit recusandae quod nam
+            nisi ducimus, dicta ab eos doloremque quas? Reprehenderit culpa
+            blanditiis officiis velit vitae perferendis quisquam, alias eum,
+            quae nulla est pariatur vero. Voluptate facilis, amet assumenda
+            maxime consectetur molestiae quas animi tempora repudiandae soluta
+            perferendis laudantium voluptates ipsa dolorum odio?
+          </div>
+          <div id='contact'>
+            CONTACT ipsum dolor sit amet, consectetur adipisicing elit. Rerum
+            laudantium pariatur ipsum eius laboriosam illum, harum et fugiat
+            architecto dolorem repellat aspernatur reprehenderit, dolores
+            voluptates maiores hic amet commodi soluta neque nulla aliquid
+            dolorum? Omnis nesciunt cupiditate ratione culpa officiis. Laborum
+            corporis iure asperiores repellendus iste culpa, fuga quae illum
+            architecto autem iusto voluptas atque laboriosam molestias porro
+            praesentium saepe totam, delectus quis perspiciatis. Tenetur ratione
+            voluptates illo aliquam debitis, a quisquam optio expedita enim unde
+            deserunt veritatis ex atque accusamus. Vero maiores accusamus beatae
+            illo praesentium mollitia eius cum, dicta quisquam placeat provident
+            voluptatum atque ipsam pariatur officia deserunt hic aliquam animi!
+            Mollitia quasi blanditiis ducimus, modi iure, voluptate quo sed unde
+            consequuntur tenetur tempora, doloremque fugit voluptatum corrupti
+            temporibus officia repellendus corporis quidem distinctio animi illo
+            ipsam reprehenderit veniam ratione! Rem facere tempora odit, quos
+            beatae amet aperiam adipisci consectetur commodi doloremque quis
+            ipsum ratione ipsam minus accusamus aut quidem nihil, sequi
+            praesentium reprehenderit quod nobis, numquam dignissimos! Cum
+            aspernatur recusandae veritatis mollitia ab incidunt eos dicta!
+            Velit ut unde nulla quo odio eveniet tempore quos quaerat. Molestiae
+            ratione sint, corporis quae nulla esse incidunt nisi harum ab vero
+            labore placeat, nesciunt magnam consequatur quasi repellat aliquid a
+            sapiente? Ut voluptas repellendus accusamus eum deserunt placeat in
+            numquam, deleniti temporibus obcaecati nisi blanditiis perspiciatis
+            incidunt vitae optio error sint nulla nam eius, nobis, esse
+            distinctio a minima architecto. Mollitia iste aperiam, qui
+            voluptates repellat alias pariatur impedit ex excepturi corrupti
+            quidem. Tempore maxime hic nihil, unde asperiores itaque mollitia
+            culpa exercitationem nesciunt suscipit impedit dicta, quod numquam?
+            Perspiciatis eveniet quam quia. Eaque, ipsa rerum ab tempore
+            obcaecati temporibus rem consectetur reiciendis maiores.
+            Consectetur, fuga. Sit est quis fugit amet, ratione ullam blanditiis
+            suscipit fugiat officiis praesentium unde molestias, delectus nemo
+            eos ipsam iusto laboriosam ducimus sunt eaque doloribus!
+          </div>
+          <div id='info'>
+            INFO ipsum dolor sit amet consectetur adipisicing elit. Ratione
+            aliquid quis eos accusantium commodi debitis aspernatur eveniet
+            consectetur distinctio cum ducimus cumque exercitationem sapiente
+            magnam odit, eum fuga aliquam asperiores. Perferendis repudiandae
+            eaque consequuntur dicta asperiores recusandae esse odio, deleniti
+            nobis ex voluptatum obcaecati aliquid et. Debitis laudantium
+            suscipit natus atque quasi perferendis, temporibus corrupti
+            distinctio rerum sint, consequuntur inventore beatae ipsam, cumque
+            eum repellendus officiis fuga. Dignissimos nesciunt, ab facilis
+            velit, quam esse asperiores officia aperiam sint itaque, vero
+            laboriosam fuga accusantium voluptates! Cum repellat voluptas harum
+            obcaecati suscipit excepturi quisquam exercitationem! Et nisi iure
+            dolorum ratione accusantium asperiores.
+          </div>
         </Main>
       </ThemeProvider>
     </ThemeProvider>
