@@ -5,12 +5,18 @@ const WrapperHeight = '100'
 export const Wrapper = styled.main`
   width: 450px;
   height: ${WrapperHeight};
+  background-color: #fff;
+  opacity: 0.9;
+  cursor: pointer;
+  :hover {
+    opacity: 1;
+  }
 `
 
 export const Content = styled.div`
   position: absolute;
   overflow: clip;
-  background-color: #fff;
+  background-color: inherit;
   border-radius: 2rem;
   width: ${(props) => (props.isExpend ? '400px' : '150px')};
   height: ${(props) => (props.isExpend ? '220px' : '70px')};
@@ -22,11 +28,13 @@ export const Content = styled.div`
 
   h4 {
     text-align: center;
+    text-transform: uppercase;
   }
   p {
     transform: ${(props) => (props.isExpend ? 'scale(1)' : 'scale(0)')};
 
-    transition: ${(props) => (props.isExpend ? '1s' : '1.5s')};
     line-height: ${(props) => (props.isExpend ? '20px' : '0px')};
+
+    transition: ${(props) => (props.isExpend ? '1s' : '1.5s')};
   }
 `
