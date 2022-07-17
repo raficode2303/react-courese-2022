@@ -11,10 +11,18 @@ export const TableRow = styled.tr`
 export const TableHeading = styled.th`
   color: green;
   font-size: 1.5rem;
+  border: 2px solid;
 `
 export const TableData = styled.td`
   color: ${({ color }) => color};
   background-color: rgba(0, 0, 0, 0.3);
   border: 2px solid;
   font-size: 1.5rem;
+`
+export const CategorySpan = styled.span`
+  color: ${({ color }) => color};
+  background-color: gold;
+  /* border: 2px solid; */
+  font-size: 1.5rem;
+  width: 100%;
 `

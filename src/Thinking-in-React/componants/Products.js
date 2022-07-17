@@ -5,6 +5,7 @@ import {
   TableRow,
   TableHeading,
   TableData,
+  CategorySpan,
 } from './Products.styles'
 
 // Context
@@ -50,24 +51,30 @@ export const Products = () => {
           ))}
         </TableRow>
       </thead>
+      <tbody>
+        {uniqueCategorysArray.map((item) => (
+          <React.Fragment key={item}>
+            <TableRow>
+              <TableHeading style={{ color: 'purple' }} colSpan={2}>
+                {item}
+              </TableHeading>
+            </TableRow>
 
-      {uniqueCategorysArray.map((item) => (
-        <React.Fragment key={item}>
-          <TableHeading>{item}</TableHeading>
-          {products.map((product) =>
-            product.category === item ? (
-              <TableRow key={product.name}>
-                <TableData color={product.stocked ? 'black' : 'red'}>
-                  {product.name}
-                </TableData>
-                <TableData color={product.stocked ? 'blue' : 'red'}>
-                  {product.price}
-                </TableData>
-              </TableRow>
-            ) : null
-          )}
-        </React.Fragment>
-      ))}
+            {products.map((product) =>
+              product.category === item ? (
+                <TableRow key={product.name}>
+                  <TableData color={product.stocked ? 'black' : 'red'}>
+                    {product.name}
+                  </TableData>
+                  <TableData color={product.stocked ? 'blue' : 'red'}>
+                    {product.price}
+                  </TableData>
+                </TableRow>
+              ) : null
+            )}
+          </React.Fragment>
+        ))}
+      </tbody>
     </WrapperTable>
   )
 }
