@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 // import './index.css'
-import Index from './framer-motion'
+import Index from './Thinking-in-React'
 
 ReactDOM.render(
   <React.StrictMode>
